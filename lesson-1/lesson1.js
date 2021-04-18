@@ -55,3 +55,13 @@ const renderProducts = (list = []) => {
 
 // Можно было деконструрировать объект, выделить переменные, и передавать переменные, вместо всего объекта
 renderProducts(products);
+
+let buttonsCards = document.getElementsByClassName('products-by-btn');
+let counterCart = 0;
+
+for(let el of buttonsCards) {
+    el.addEventListener("click", () =>{
+        counterCart++;
+        document.querySelector('.cart-count').innerHTML = counterCart;
+    });
+}
