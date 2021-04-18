@@ -34,7 +34,13 @@ const renderProducts = (list = []) => {
         return renderProduct(item.title, item.price);
     });
 
-    document.querySelector(".products").innerHTML = productList;
+    // ? Вывод совершается с запятой, так как переменная состоит из массива разметки с запятой
+    // ? для того, чтобы обойти этот момент, проще всего через цикл вывести содержимое массива
+    // * document.querySelector(".products").innerHTML = productList;
+
+    productList.forEach((product) =>{
+        document.querySelector('.products').insertAdjacentHTML("beforeend", product);
+    });
 }
 
 renderProducts(products);
