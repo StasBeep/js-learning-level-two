@@ -28,10 +28,10 @@ const products = [{
  * @returns {string} разметка страницы
  */
 const renderProduct = ({title}, {price}) => {
-    return `<div class="product-item">
-                <h3>${title}</h3>
-                <p>${price}</p>
-                <button class="by-btn">Добавить в корзину</button>
+    return `<div class="products-item">
+                <h3 class="products-title">${title}</h3>
+                <p class="products-price">${price}</p>
+                <button class="products-by-btn">Добавить в корзину</button>
             </div>`;
 }
 
