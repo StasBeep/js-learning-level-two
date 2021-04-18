@@ -21,7 +21,13 @@ const products = [{
     },
 ];
 
-const renderProduct = (title, price) => {
+/**
+ * Создание разметки для карточки товара
+ * @param {string} переменная заголовка товара 
+ * @param {number} переменная цены товара 
+ * @returns {string} разметка страницы
+ */
+const renderProduct = ({title}, {price}) => {
     return `<div class="product-item">
                 <h3>${title}</h3>
                 <p>${price}</p>
@@ -29,18 +35,23 @@ const renderProduct = (title, price) => {
             </div>`;
 }
 
+/**
+ * Создание разметки (в переменной), вывод разметки на страницу
+ * @param {array} list массив объектов для разметки 
+ */
 const renderProducts = (list = []) => {
     const productList = list.map((item) => {
-        return renderProduct(item.title, item.price);
+        return renderProduct(item, item);
     });
 
     // ? Вывод совершается с запятой, так как переменная состоит из массива разметки с запятой
     // ? для того, чтобы обойти этот момент, проще всего через цикл вывести содержимое массива
     // * document.querySelector(".products").innerHTML = productList;
 
-    productList.forEach((product) =>{
+    productList.forEach((product) => {
         document.querySelector('.products').insertAdjacentHTML("beforeend", product);
     });
 }
 
+// Можно было деконструрировать объект, выделить переменные, и передавать переменные, вместо всего объекта
 renderProducts(products);
