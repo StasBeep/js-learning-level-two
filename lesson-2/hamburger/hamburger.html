@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hamburger</title>
+    <link rel="stylesheet" href="../../css/hamburger.css">
+</head>
+
+<body>
+    <form action="#">
+        <figure>
+            <span>Выберите тип булочки:</span>
+            <input type="radio" name="bun" id="bun-white" data-calories="20" data-price="100" checked>
+            <label for="bun-white">Белая булочка (20 калорий, 100 рублей)</label>
+            <input type="radio" name="bun" id="bun-potato" data-calories="35" data-price="120">
+            <label for="bun-potato">Белая булочка (30 калорий, 120 рублей)</label>
+        </figure>
+
+        <figure>
+            <span>Выберите тип сыра:</span>
+            <input type="radio" name="cheese" id="cheese-fused" data-calories="10" data-price="35" checked>
+            <label for="cheese-fused">Плавленный сыр (10 калорий, 35 рублей)</label>
+            <input type="radio" name="cheese" id="cheese-none" data-calories="0" data-price="0">
+            <label for="cheese-none">Без сыра (0 калорий, 0 рублей)</label>
+        </figure>
+
+        <figure>
+            <span>Выберите тип мяса:</span>
+            <input type="radio" name="meat" id="meat-chicken" data-calories="200" data-price="150" checked>
+            <label for="meat-chicken">Курица (200 калорий, 150 рублей)</label>
+            <input type="radio" name="meat" id="meat-beef" data-calories="350" data-price="250">
+            <label for="meat-beef">Говядина (350 калорий, 250 рублей)</label>
+        </figure>
+
+        <figure>
+            <span>Приправы:</span>
+            <input type="checkbox" name="additional" id="mayonnaise" data-calories="20" data-price="15">
+            <label for="mayonnaise">Майонез (20 калорий, 15 рублей)</label>
+            <input type="checkbox" name="additional" id="ketchup" data-calories="15" data-price="10" checked>
+            <label for="ketchup">Кетчуп (15 калорий, 10 рублей)</label>
+            <input type="checkbox" name="additional" id="seasoning" data-calories="0" data-price="5">
+            <label for="seasoning">Приправы (0 калорий, 5 рублей)</label>
+        </figure>
+
+        <button id="check" type="button">Рассчитать</button>
+
+        <span>Итог:</span>
+        <span id="price">0</span>
+        <span id="calories">0</span>
+    </form>
+
+    <script src="../hamburger/hamburger.js"></script>
+</body>
+
+</html>
