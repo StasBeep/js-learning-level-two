@@ -51,3 +51,33 @@ class ProductItem {
 }
 
 const catalog = new ProductList();
+
+
+
+// Блок корзины
+class CartProduct {
+  constructor(numberList, quantityInStock) {
+    this.numberList = numberList;
+    this.quantityInStock = quantityInStock;
+  }
+
+  // свойство удаления товара из корзины
+
+  // свойство добавления количества со склада одинокового товара
+
+  // проверка количества элементов на складе
+}
+
+class CartItem extends CartProduct {
+  constructor(numberList, quantityInStockid, id, img, title, price){
+    super(numberList, quantityInStockid);
+    this.id = id;
+    this.img = img;
+    this.title = title;
+    this.price = price;
+  }
+
+  // добавление в корзину
+
+  // при покупке - удаление элемента со склада
+}
