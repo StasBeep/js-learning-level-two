@@ -1,6 +1,7 @@
 "use strict";
 
-let txt =  `One: 'Hi Mary.' Two: 'Oh, hi.'
+let txt =  `One: 'Hi Mary.' 
+            Two: 'Oh, hi.'
             One: 'How are you doing?'
             Two: 'I'm doing alright. How about you?'
             One: 'Not too bad. The weather is great isn't it?'
@@ -17,4 +18,6 @@ let txt =  `One: 'Hi Mary.' Two: 'Oh, hi.'
             Two: 'I'll see you next time.'
             One: 'Sure.' Bye.'`;
 
-console.log(txt.replace(/\'/g, '\"'));
+let txtTwo = txt.replace(/\'/g, '\"');
+console.log(txtTwo);
+console.log(txtTwo.replace(/\b\"+\b/g, '\''));
