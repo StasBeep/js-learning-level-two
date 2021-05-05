@@ -44,20 +44,22 @@
 // }
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-// В ДЗ переделать на промисы не используя fetch
-var getRequest = (url, callBack) => {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === 4) {
-      if (xhr.status !== 200) {
-        console.log('Error');
-      } else {
-        callBack(xhr.responseText);
+// Переделанно на промисы
+let getRequest = (url) => {
+  return new Promise((resolve, reject) => {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status !== 200) {
+          reject('Error');
+        } else {
+          resolve(xhr.responseText);
+        }
       }
-    }
-  };
-  xhr.send();
+    };
+    xhr.send();
+  })
 }
 // - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -70,14 +72,16 @@ class ProductList {
     // this._fetchGoods();
     // this._render();
     this._getGoods()
-        .then((data) => {
-          this._goods = data;
-          this._render();
-        });
+      .then((data) => {
+        this._goods = data;
+        this._render();
+      });
   }
 
   sum() {
-    return this._goods.reduce((sum, { price }) => sum + price, 0);
+    return this._goods.reduce((sum, {
+      price
+    }) => sum + price, 0);
   }
 
   // _fetchGoods() {
@@ -90,7 +94,7 @@ class ProductList {
   // }
   _getGoods() {
     return fetch(`${API}/catalogData.json`)
-        .then(result => result.json()).catch(error => console.log(error));
+      .then(result => result.json()).catch(error => console.log(error));
   }
 
   _render() {
@@ -107,7 +111,7 @@ class ProductList {
 }
 
 class ProductItem {
-  constructor(product, img='https://via.placeholder.com/200x150') {
+  constructor(product, img = 'https://via.placeholder.com/200x150') {
     this.title = product.title;
     this.price = product.price;
     this.id = product.id;
@@ -149,4 +153,3 @@ const catalog = new ProductList();
 // };
 //
 // renderProducts(products);
-
