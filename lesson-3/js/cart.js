@@ -9,6 +9,7 @@ const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-a
  */
 class List {
     // в лист лежит параметр, который будет генерировать список товаров корзины и каталога
+    // listContext - объект из товаров корзины и каталога (СЛОВАРЬ)
     constructor(url, container, list = listContext) {
         this.container = container;
         this.list = list; // словарь для классов строка 213
@@ -16,7 +17,7 @@ class List {
         this.goods = [];
         this.allProducts = [];
         this.filtered = []; // отфильтрованные товары
-        this._init();
+        this._init(); // Метод клика на кнопках
     }
 
     /**
@@ -140,8 +141,11 @@ class ProductItem extends Item {
     }
 }
 
+// Класс Cart наследуется от класса List
 class Cart extends List {
+    // В конструкторе создаётся элемент, куда это будет помещаться, а также дополнение к API, чтобы найти нужный json
     constructor(container = ".cart-block", url = "/getBasket.json") {
+        // наследование всех свойст с класса List
         super(url, container);
         this.getJson()
             .then(data => {
@@ -219,6 +223,7 @@ class Cart extends List {
             document.querySelector(this.container).classList.toggle('invisible');
         });
         document.querySelector(this.container).addEventListener('click', e => {
+            // если есть такий класс тогда:
             if (e.target.classList.contains('del-btn')) {
                 this.removeProduct(e.target);
             }
@@ -247,7 +252,7 @@ class CartItem extends Item {
             <button class="del-btn" data-id="${this.id_product}">&times;</button>
         </div>
         </div>`
-    }h
+    }
 }
 
 const listContext = {
