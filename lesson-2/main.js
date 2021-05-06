@@ -6,8 +6,6 @@ class ProductList {
 
     this._fetchGoods();
     this._render();
-
-    this.sumPrice = 0;
     this.sumProducts();
   }
 
@@ -34,10 +32,11 @@ class ProductList {
 
   // Метод, результат суммарной стоимости всех товаров
   sumProducts() {
+    let sumPrice = 0;
     for(let el of this._goods) {
-      this.sumPrice += el.price;
+      sumPrice += el.price;
     }
-    console.log(this.sumPrice);
+    return sumPrice;
   }
 }
 
