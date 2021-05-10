@@ -1,6 +1,6 @@
 "use strict";
 
-let txt =  `One: 'Hi Mary.' 
+let txt = `One: 'Hi Mary.' 
             Two: 'Oh, hi.'
             One: 'How are you doing?'
             Two: 'I'm doing alright. How about you?'
@@ -21,3 +21,7 @@ let txt =  `One: 'Hi Mary.'
 let txtTwo = txt.replace(/\'/g, '\"');
 console.log(txtTwo);
 console.log(txtTwo.replace(/\b\"+\b/g, '\''));
+
+// Второй более лёгкий вариант решения
+let text = txt.replace(/\B'|'\B/g, '"');
+console.log(text);
