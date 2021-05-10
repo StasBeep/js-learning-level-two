@@ -19,8 +19,17 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-                <button class="btn-cart" type="button">Корзина</button>
-                <div class="cart-block"></div>
+                <button class="btn-cart" type="button" @click="isVisibleCart = !isVisibleCart">Корзина</button>
+                <div class="cart-block" :class="{invisible: !isVisibleCart}">
+                    <p v-if="!cartArr.length">Нет данных</p>
+                    <div v-else v-for="el of cartArr" :key="el.id_product">
+                        <img alt="img">
+                        <p>{{el.product_name}}</p>
+                        <p>Количество: {{el.quantity}}</p>
+                        <p>цена: {{el.price}}</p>
+                        <p>цена от количества: {{el.price*el.quantity}}</p>
+                    </div>
+                </div>
             </div>
         </header>
         <main>
