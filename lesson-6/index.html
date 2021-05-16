@@ -19,9 +19,7 @@
         </header>
         <main>
             <products ref="products"></products>
-            <div class="error" v-if="visible">
-                <p>{{ErrorTitle}}</p>
-            </div>
+            <error ref="error"></error>
         </main>
     </div>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
@@ -31,7 +29,7 @@
     <script src="js/CartComp.js"></script>
     <script src="js/ProducComp.js"></script>
     <script src="js/Filter.js"></script>
-
+    <script src="js/ErrorServer.js"></script>
     <script src="js/main.js"></script>
 </body>
 

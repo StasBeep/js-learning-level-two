@@ -2,23 +2,15 @@ const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-a
 
 const app = new Vue({
     el: '#app',
-    data: {
-        ErrorTitle: 'error server',
-        visible: false,
-    },
     methods: {
         getJson(url) {
             return fetch(url)
                 .then(result => result.json())
                 .catch(error => {
                     //console.log(error);
-                    error.visError();i
+                    this.$refs.error.visError();
                 })
         },
-
-        visError() {
-            this.visible = true;
-        }
     },
     mounted() {
         console.log(this);
