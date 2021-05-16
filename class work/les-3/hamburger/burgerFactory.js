@@ -7,7 +7,7 @@ class Param {
 }
 
 class Burger {
-    constructor(size, add, topping){
+    constructor(size, add, topping) {
         this.size = new Param(this._select(size));
         this.add = new Param(this._select(add));
         this.toppings = this._getToppings(topping);
@@ -39,7 +39,7 @@ class Burger {
         return result;
     }
 
-    showSum(price, calories){
+    showSum(price, calories) {
         document.querySelector(price).textContent = this._sumPrice();
         document.querySelector(calories).textContent = this._sumCalories();
     }

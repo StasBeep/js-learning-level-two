@@ -2,12 +2,12 @@
  * @param {number} x
  * @return {number}
  */
-var reverse = function(x) {
+var reverse = function (x) {
     let reversedNumber = Math.abs(x).toString().split('').reverse().join('');
 
     reversedNumber = x >= 0 ? +reversedNumber : -reversedNumber;
-    return reversedNumber <= -Math.pow(2, 31) || reversedNumber >= Math.pow(2, 31) -1
-        ? 0 : reversedNumber;
+    return reversedNumber <= -Math.pow(2, 31) || reversedNumber >= Math.pow(2, 31) - 1 ?
+        0 : reversedNumber;
 };
 
 console.log(reverse(-10)); // -1
