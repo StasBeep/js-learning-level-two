@@ -1,19 +1,23 @@
 Vue.component('cart', {
-    data(){
-      return {
-          imgCart: 'https://placehold.it/50x100',
-          cartItems: [],
-          showCart: false,
-      }
+    data() {
+        return {
+            imgCart: 'https://placehold.it/50x100',
+            cartItems: [],
+            showCart: false,
+        }
     },
     methods: {
-        addProduct(product){
+        addProduct(product) {
             let find = this.cartItems.find(el => el.id_product === product.id_product);
-            if(find){
-                this.$parent.putJson(`/api/cart/${find.id_product}`, {quantity: 1});
+            if (find) {
+                this.$parent.putJson(`/api/cart/${find.id_product}`, {
+                    quantity: 1
+                });
                 find.quantity++;
             } else {
-                let prod = Object.assign({quantity: 1}, product);
+                let prod = Object.assign({
+                    quantity: 1
+                }, product);
                 this.$parent.postJson('/api/cart', prod)
                     .then(data => {
                         if (data.result === 1) {
@@ -24,7 +28,9 @@ Vue.component('cart', {
         },
         remove(item) {
             if (item.quantity > 1) {
-                this.$parent.putJson(`/api/cart/${item.id_product}`, {quantity: -1})
+                this.$parent.putJson(`/api/cart/${item.id_product}`, {
+                        quantity: -1
+                    })
                     .then(data => {
                         if (data.result === 1) {
                             item.quantity--;
@@ -40,10 +46,10 @@ Vue.component('cart', {
             }
         },
     },
-    mounted(){
+    mounted() {
         this.$parent.getJson('/api/cart')
             .then(data => {
-                for(let el of data.contents){
+                for (let el of data.contents) {
                     this.cartItems.push(el);
                 }
             });
